@@ -194,6 +194,17 @@ class CapacitorFirebaseDynamicLinks : Plugin() {
                     }
                     if (deepLink != null) {
                         val ret = JSObject()
+                        
+                        val intentData: Uri? = intent.data
+                        if (intentData != null) {
+                            val code: String = intentData.getQueryParameter("oobCode").orEmpty()
+                            val mode: String = intentData.getQueryParameter("mode").orEmpty()
+                            val parameter: String = intentData.toString()
+                            ret.put("code", code)
+                            ret.put("mode", mode)
+                            ret.put("parameter", parameter)
+                        }
+                        
                         ret.put("url", deepLink.toString())
                         notifyListeners(EVENT_DEEP_LINK, ret, true)
                     }
