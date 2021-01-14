@@ -82,7 +82,7 @@ class CapacitorFirebaseDynamicLinks : Plugin() {
                 googleAnalyticsParametersBuilder.term = googleAnalyticsParameters.getString("term")!!
             }
 
-            if (googleAnalyticsParameters.getString("source") != null) {
+            if (googleAnalyticsParameters.getString("content") != null) {
                 googleAnalyticsParametersBuilder.content = googleAnalyticsParameters.getString("content")!!
             }
 
